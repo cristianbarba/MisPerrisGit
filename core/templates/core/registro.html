@@ -3,6 +3,9 @@
 {% block contenido %}
 {% load static %}
 <form action="" id="formularioSocio" method="POST">
+
+
+    {% csrf_token %}
     <table class="tablaformulario">
         <tr>
             <th><label for="txtRun">Run</label></th>
@@ -103,8 +106,7 @@
         </tr>
     </table>
     <br>
-    <h3 class="resultadoFormulario">
-        <!--<?php echo $mensaje ?>-->
-    </h3>
+    <h3>{{ mensaje }}</h3>
 </form>
+
 {% endblock contenido %}
