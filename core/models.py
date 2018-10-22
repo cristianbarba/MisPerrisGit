@@ -1,5 +1,8 @@
 from django.db import models
 
+
+#dejar las constraint not null para evitar errores
+
 # Create your models here.
 
 class Genero(models.Model):
