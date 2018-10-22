@@ -70,10 +70,10 @@ class Usuario(models.Model):
     telefon=models.IntegerField()
     direccion=models.CharField(max_length=255)
     mail=models.CharField(max_length=50)
-    id_usuario=models.ForeignKey(Tipo_usuario,on_delete=models.CASCADE)
-    id_tip_vivienda=models.ForeignKey(Tipo_Vivienda,on_delete=models.CASCADE)
-    id_comuna=models.ForeignKey(Comuna,on_delete=models.CASCADE)
-    id_genero=models.ForeignKey(Genero,on_delete=models.CASCADE)
+    id_usuario=models.ForeignKey(Tipo_usuario,on_delete=models.CASCADE,null=True)
+    id_tip_vivienda=models.ForeignKey(Tipo_Vivienda,on_delete=models.CASCADE,null=True)
+    id_comuna=models.ForeignKey(Comuna,on_delete=models.CASCADE,null=True)
+    id_genero=models.ForeignKey(Genero,on_delete=models.CASCADE,null=True)
 
 
     class Meta:
