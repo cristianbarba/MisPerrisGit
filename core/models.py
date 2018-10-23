@@ -98,8 +98,8 @@ class Trabajador(models.Model):
     direccion=models.CharField(max_length=255)
     mail=models.CharField(max_length=50)
     sueldo=models.IntegerField()
-    id_comuna=models.ForeignKey(Comuna,on_delete=models.CASCADE)
-    id_genero=models.ForeignKey(Genero,on_delete=models.CASCADE)
+    id_comuna=models.ForeignKey(Comuna,on_delete=models.CASCADE,null=True)
+    id_genero=models.ForeignKey(Genero,on_delete=models.CASCADE,null=True)
 
     class Meta:
         verbose_name="Trabajador"
@@ -113,8 +113,8 @@ class Trabajador(models.Model):
 class Login(models.Model):
     usuario=models.CharField(max_length=100)
     password=models.CharField(max_length=100)
-    rut_trabajador=models.ForeignKey(Trabajador,on_delete=models.CASCADE)
-    rut_usuario=models.ForeignKey(Usuario,on_delete=models.CASCADE)
+    rut_trabajador=models.ForeignKey(Trabajador,on_delete=models.CASCADE,null=True)
+    rut_usuario=models.ForeignKey(Usuario,on_delete=models.CASCADE,null=True)
 
 
     class Meta:
@@ -152,8 +152,8 @@ class Tipo_insumo(models.Model):
 
 
 class Transferencia(models.Model):
-    rut_usuario=models.ForeignKey(Usuario,on_delete=models.CASCADE)
-    id_fondo=models.ForeignKey(Fondo_Economico,on_delete=models.CASCADE)
+    rut_usuario=models.ForeignKey(Usuario,on_delete=models.CASCADE,null=True)
+    id_fondo=models.ForeignKey(Fondo_Economico,on_delete=models.CASCADE,null=True)
     cod_compania=models.IntegerField()
     
     class Meta:
@@ -166,7 +166,7 @@ class Transferencia(models.Model):
 
 class Insumo(models.Model):
     descripcion=models.CharField(max_length=100)
-    id_tip_insumo=models.ForeignKey(Tipo_insumo,on_delete=models.CASCADE)
+    id_tip_insumo=models.ForeignKey(Tipo_insumo,on_delete=models.CASCADE,null=True)
 
     class Meta:
         verbose_name="Insumo"
@@ -216,10 +216,10 @@ class Mascota(models.Model):
     esterilizado=models.CharField(max_length=1)
     chip=models.CharField(max_length=1)
     fec_nac=models.DateField()
-    id_raza=models.ForeignKey(Raza,on_delete=models.CASCADE)
-    id_orig_masc=models.ForeignKey(Origen_mascota,on_delete=models.CASCADE)
-    cod_refugio=models.ForeignKey(Refugio,on_delete=models.CASCADE)
-    rut_usuario=models.ForeignKey(Usuario,on_delete=models.CASCADE)
+    id_raza=models.ForeignKey(Raza,on_delete=models.CASCADE,null=True)
+    id_orig_masc=models.ForeignKey(Origen_mascota,on_delete=models.CASCADE,null=True)
+    cod_refugio=models.ForeignKey(Refugio,on_delete=models.CASCADE,null=True)
+    rut_usuario=models.ForeignKey(Usuario,on_delete=models.CASCADE,null=True)
 
 
     class Meta:
@@ -236,8 +236,8 @@ class Visita_Medica(models.Model):
     fec_visita=models.DateField()
     hora=models.DateTimeField()
     minuto=models.DateTimeField()
-    rut_trabajador=models.ForeignKey(Trabajador,on_delete=models.CASCADE)
-    cod_mascota=models.ForeignKey(Mascota,on_delete=models.CASCADE)
+    rut_trabajador=models.ForeignKey(Trabajador,on_delete=models.CASCADE,null=True)
+    cod_mascota=models.ForeignKey(Mascota,on_delete=models.CASCADE,null=True)
     
     class Meta:
         verbose_name="Visita Medica"
@@ -264,7 +264,7 @@ class Campania(models.Model):
     eslogan=models.CharField(max_length=255)
     fec_campania=models.DateField()
     horario=models.IntegerField()
-    id_tip_campania=models.ForeignKey(Tipo_campania,on_delete=models.CASCADE)
+    id_tip_campania=models.ForeignKey(Tipo_campania,on_delete=models.CASCADE,null=True)
 
 
     class Meta:
@@ -278,8 +278,8 @@ class Campania(models.Model):
 
 
 class Campania_insumo(models.Model):
-    cod_campania=models.ForeignKey(Campania,on_delete=models.CASCADE)
-    id_insumo=models.ForeignKey(Insumo,on_delete=models.CASCADE)
+    cod_campania=models.ForeignKey(Campania,on_delete=models.CASCADE,null=True)
+    id_insumo=models.ForeignKey(Insumo,on_delete=models.CASCADE,null=True)
     cantidad=models.IntegerField()
 
 
@@ -293,9 +293,9 @@ class Campania_insumo(models.Model):
 
 class Visita_adopcion(models.Model):
     adopcion=models.CharField(max_length=1)
-    rut_usuario=models.ForeignKey(Usuario,on_delete=models.CASCADE)
-    cod_mascota=models.ForeignKey(Mascota,on_delete=models.CASCADE)
-    cod_compania=models.ForeignKey(Campania,on_delete=models.CASCADE)
+    rut_usuario=models.ForeignKey(Usuario,on_delete=models.CASCADE,null=True)
+    cod_mascota=models.ForeignKey(Mascota,on_delete=models.CASCADE,null=True)
+    cod_compania=models.ForeignKey(Campania,on_delete=models.CASCADE,null=True)
 
     class Meta:
         verbose_name="Visita adopcion"
