@@ -6,14 +6,14 @@ def home(request):
     return render(request, 'core/home.html')
 
 def registro(request):
-    genero=Genero.objects.all()
+    
     region=Region.objects.all()
     ciudad=Comuna.objects.all()
     vivienda=Tipo_Vivienda.objects.all()
     usuario=Tipo_usuario.objects.all()
 
     variables= {
-         'genero':genero,
+        
           'region':region,
           'ciudad':ciudad,
           'vivienda':vivienda,
@@ -26,10 +26,7 @@ def registro(request):
         usuario.nombre=request.POST.get('txtNombre')
         usuario.ap_pat=request.POST.get('txtApPat')
         usuario.ap_mat=request.POST.get('txtApMat')
-
-        genero=Genero()
-        genero.id=int(request.POST.get('cboGenero'))
-        usuario.genero=genero
+        usuario.id_genero=request.POST.get('cboGenero')
 
 
 
@@ -44,7 +41,7 @@ def registro(request):
         #error al registrar comuna 
         ciudad=Comuna()
         ciudad.id=int(request.POST.get('cboCuidad'))
-        usuario.ciudad=ciudad
+        usuario.id_comuna=ciudad
 
 
         usuario.direccion=request.POST.get('txtDireccion')
@@ -53,13 +50,13 @@ def registro(request):
 
         tipoVivienda=Tipo_Vivienda()
         tipoVivienda.id=int(request.POST.get('cboTipoVivienda'))
-        usuario.tipoVivienda=tipoVivienda
+        usuario.id_tip_vivienda=tipoVivienda
 
 
 
         tipoUsuario=Tipo_usuario()
         tipoUsuario.id=int(request.POST.get('cboUser'))
-        usuario.tipoUsuario=tipoUsuario
+        usuario.id_usuario=tipoUsuario
 
 
         try:

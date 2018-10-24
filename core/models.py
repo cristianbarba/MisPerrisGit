@@ -5,15 +5,7 @@ from django.db import models
 
 # Create your models here.
 
-class Genero(models.Model):
-    descripcion=models.CharField(max_length=11)
 
-    class Meta:
-        verbose_name="Genero"
-        verbose_name_plural="Generos"
-
-    def __str__(self):
-        return self.descripcion
 
 #tablas Cris
 
@@ -73,10 +65,10 @@ class Usuario(models.Model):
     telefon=models.IntegerField()
     direccion=models.CharField(max_length=255)
     mail=models.CharField(max_length=50)
-    id_usuario=models.ForeignKey(Tipo_usuario,on_delete=models.CASCADE,null=True)
-    id_tip_vivienda=models.ForeignKey(Tipo_Vivienda,on_delete=models.CASCADE,null=True)
-    id_comuna=models.ForeignKey(Comuna,on_delete=models.CASCADE,null=True)
-    id_genero=models.ForeignKey(Genero,on_delete=models.CASCADE,null=True)
+    id_usuario=models.ForeignKey(Tipo_usuario,on_delete=models.CASCADE)
+    id_tip_vivienda=models.ForeignKey(Tipo_Vivienda,on_delete=models.CASCADE)
+    id_comuna=models.ForeignKey(Comuna,on_delete=models.CASCADE)
+    id_genero=models.CharField(max_length=10)
 
 
     class Meta:
@@ -99,7 +91,7 @@ class Trabajador(models.Model):
     mail=models.CharField(max_length=50)
     sueldo=models.IntegerField()
     id_comuna=models.ForeignKey(Comuna,on_delete=models.CASCADE,null=True)
-    id_genero=models.ForeignKey(Genero,on_delete=models.CASCADE,null=True)
+    id_genero=models.CharField(max_length=10)
 
     class Meta:
         verbose_name="Trabajador"

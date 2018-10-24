@@ -7,7 +7,6 @@ class MascotaAdmin(admin.ModelAdmin):
     list_filter = ('esterilizado')
 
 
-admin.site.register(Genero)
 admin.site.register(Region)
 admin.site.register(Comuna)
 admin.site.register(Tipo_Vivienda)
