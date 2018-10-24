@@ -78,7 +78,19 @@ def registroComunas(request,id):  #nuevo metodo view que filtra las comunas segu
    })
 
 
+def registroMascotas(request):
+    raza=Raza.objects.all()
+    origen=Origen_mascota.objects.all()
+    refugio=Refugio.objects.all()
 
+    variables={
+        'raza':raza,
+        'origen':origen,
+        'refugio':refugio
+
+    }
+
+    return render(request,'core/registroMascotas.html',variables)
 
 
 
