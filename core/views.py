@@ -1,5 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import *
+
+
+#importamos la mensajeria de django
+from django.contrib import messages
+#importamos decorador que nos permitirá
+#solicitar login en determinado view
+from django.contrib.auth.decorators import login_required
+#nuevo comentario
 
 # Create your views here.
 def home(request):
@@ -77,7 +85,7 @@ def registroComunas(request,id):  #nuevo metodo view que filtra las comunas segu
           'ciudad':ciudad, #retorna tambien la ciudad
    })
 
-
+@login_required
 def registroMascotas(request):
     raza=Raza.objects.all()
     origen=Origen_mascota.objects.all()
@@ -140,6 +148,21 @@ def registroMascotas(request):
 
 
 
+def eliminar(request, id):
 
+    #para eliminar es necesario primero buscar el automovil
+    mascota = Mascota.objects.get(id=id)
+
+    #una vez encontrado el automovil se procede a eliminarlo
+    try:
+        mascota.delete()
+        mensaje = "Eliminado correctamente"
+        messages.success(request, mensaje)
+    except:
+        mensaje ="No se ha podido eliminar"
+        messages.error(request, mensaje)
+        
+    #el redirect lo redirige por alias de una ruta
+    return redirect(to="listado")
 
 

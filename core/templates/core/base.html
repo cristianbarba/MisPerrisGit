@@ -44,6 +44,20 @@
             <li><a href="#">servicios</a></li>
             <li><a href="#">contáctanos</a></li>
             <li><a href="{%url 'registro' %}">hazte socio</a></li>
+            {% if request.user.is_authenticated %}
+           <li>
+               <a href="{% url 'logout' %}">Cerrar sesion</a>
+           </li>
+           {% else %}
+           
+           <li>
+               <a href="{% url 'login' %}">Login</a>
+           </li>
+           <li>
+               <a href="{% url 'register' %}">Registro</a>
+           </li>
+
+           {% endif %}
         </ul>
     </header>
     <div class="landing">
