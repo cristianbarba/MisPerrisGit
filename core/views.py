@@ -90,6 +90,52 @@ def registroMascotas(request):
 
     }
 
+
+    if request.POST:
+        mascota=Mascota()
+        mascota.nombre=request.POST.get('txtNombre')
+        mascota.esterilizado=request.POST.get('cboEsterilizado')
+        mascota.chip=request.POST.get('cboChip')
+        mascota.fec_nac=request.POST.get('txtNacimiento')
+        
+
+        raza=Raza()
+        raza.id=int(request.POST.get('cboRaza'))
+        mascota.id_raza=raza
+
+
+
+        origen=Origen_mascota()
+        origen.id=int(request.POST.get('cboOrigen'))
+        mascota.id_orig_masc=origen
+
+
+        refugio=Refugio()
+        refugio.id=int(request.POST.get('cboRefugio'))
+        mascota.cod_refugio=refugio
+
+        usuario=Usuario()
+        usuario.rut_usuario=request.POST.get('txtRut')
+        mascota.rut_usuario=usuario
+
+
+        try:
+            mascota.save()
+            variables['mensaje']= "Se registro la mascota"
+        except Exception as a:
+            variables['mensaje']= "Error al registrar Mascota" + str(a)
+
+
+
+
+        #tipoUsuario=Tipo_usuario()
+        #tipoUsuario.id=int(request.POST.get('cboUser'))
+        #usuario.id_usuario=tipoUsuario
+        
+
+
+
+
     return render(request,'core/registroMascotas.html',variables)
 
 

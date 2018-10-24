@@ -211,7 +211,7 @@ class Mascota(models.Model):
     id_raza=models.ForeignKey(Raza,on_delete=models.CASCADE,null=True)
     id_orig_masc=models.ForeignKey(Origen_mascota,on_delete=models.CASCADE,null=True)
     cod_refugio=models.ForeignKey(Refugio,on_delete=models.CASCADE,null=True)
-    rut_usuario=models.ForeignKey(Usuario,on_delete=models.CASCADE,null=True)
+    rut_usuario=models.CharField(max_length=20)
 
 
     class Meta:
