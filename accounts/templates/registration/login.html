@@ -5,17 +5,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    
-    <h2>Ingresa tus credenciales</h2>
+    <title>Login</title>
+    {% load static %} <!--Cual era la extension para que esto este en colores???????-->
+    <style>
+            .credenciales{
+                margin-left: 30%;
+                display: inline-block;
+                color: rgb(65, 66, 66);
+                
+            }
+    </style>
+    <style>
+            form input, form textarea{
+                display: block;   
+            }
+    </style>
+    <style>
+            body {
+                position: relative;
+                z-index: 1;
+                background: #FFFFFF;
+                max-width: 480px;
+                margin: 0 auto 100px;
+                padding: 45px;
+                box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+              }
+    </style>
 
-    <form action="" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="login">
-    </form>
+    <style>
+            .btnlogin{
+                width: 200px;
+                margin-left: -8%;
+                text-decoration: none;
+                padding: 10px;
+                font-weight: 600;
+                font-size: 20px;
+                color: #ffffff;
+                background-color: #27d69c;
+                border-radius: 6px;
+                border: 2px solid #04d427;
+            }
+            h2{
+                margin-left: -12%;
+                color: #FFFFFF;
+            }
+    </style>
+
+</head>
+<body style="background-color:  rgb(133,212,183);">
+    <div class="credenciales">
+
+            <h2>Ingresa tus credenciales</h2>
+
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Ingresar" class="btnlogin">
+                
+            </form>
+
+    </div>
+    
     
 
 

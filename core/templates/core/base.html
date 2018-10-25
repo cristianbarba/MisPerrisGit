@@ -46,7 +46,9 @@
             <li><a href="{%url 'registro' %}">hazte socio</a></li>
             {% if request.user.is_authenticated %}
            <li>
-               <a href="{% url 'logout' %}">Cerrar sesion</a>
+                <a href="{% url 'registroMascotas' %}">Registrar Mascotas</a>
+                <a href="{% url 'logout' %}">Cerrar sesion</a>
+               
            </li>
            {% else %}
            
