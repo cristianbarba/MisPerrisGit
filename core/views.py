@@ -90,11 +90,13 @@ def registroMascotas(request):
     raza=Raza.objects.all()
     origen=Origen_mascota.objects.all()
     refugio=Refugio.objects.all()
+    masc=Mascota.objects.all()
 
     variables={
         'raza':raza,
         'origen':origen,
-        'refugio':refugio
+        'refugio':refugio,
+        'masc':masc
 
     }
 
@@ -146,9 +148,7 @@ def registroMascotas(request):
 
     return render(request,'core/registroMascotas.html',variables)
 
-
-
-def eliminar(request, id):
+def eliminarMascota(request, id):
 
     #para eliminar es necesario primero buscar el automovil
     mascota = Mascota.objects.get(id=id)
@@ -163,6 +163,4 @@ def eliminar(request, id):
         messages.error(request, mensaje)
         
     #el redirect lo redirige por alias de una ruta
-    return redirect(to="listado")
-
-
+    return redirect(to="registroMascotas")

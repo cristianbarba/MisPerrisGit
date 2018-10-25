@@ -182,6 +182,55 @@ footer{
 .resultadoFormulario{
     padding-left: 546px;
 }
+.centrar{
+    float: left;
+    padding-left: 600px;
+}
+
+.tablaformulario2{
+    width: 300px;
+    text-align: left;
+    margin-left: 100px;
+    margin-top: 55px;
+    float: left;
+}
+.tablaformulario2 tr th input{
+    width: 150px;
+}
+.tablaformulario2 tbody tr th select{
+    width: 154px!important;
+}
+
+.resultadoMascota{
+    width: 500px;    
+    margin-left: 440px;
+    margin-top: -5px;
+    border-style: solid ;
+    float: left;
+    text-align: start;
+    position: absolute;
+    font-weight: bold;
+
+
+    border-collapse: collapse;
+}
+.resultadoMascota td th{
+    width: 550px!important;
+    border: 1px solid rgb(17, 223, 51);
+    font-weight: bold;
+    
+}
+.resultadoMascota tr th{
+    text-align: center;
+    border: 1px solid black;
+    font-weight: bold;
+
+}
+
+.lista_datos{
+    text-align: center;
+    border: 1px solid black;
+}
 
 @media(max-width:1024px){
 

@@ -80,20 +80,64 @@
                 <br>
                 <input type="submit" value="Registro" id="btnGuardar">
             </th>
-            <th>
-                <br>
-                a href="{% url 'eliminar' a.id %}">Eliminar</a>
-            </th>
+
         </tr>
     </table>
     <br>
 
 
-    <h3>{{ mensaje }}</h3>
+    
 
 
 </form>
 
+</form>
+
+<table class="resultadoMascota">
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Esterilizado</th>
+        <th>Chip</th>
+        <th>Rut de Usuario</th>
+        <th>Opciones</th>
+    </tr>
+    {# por cada fila de la BBDD creamos una fila de la tabla #}
+     {% for m in masc %}
+
+    <tr>
+        <td>{{ m.id }}</td>
+        <td>{{ m.nombre }}</td>
+        
+        {% if m.esterilizado == "1" %}
+            <td>Esterilizado</td>
+        {% else %}
+            <td>No esterilizado</td>
+        {% endif %}
+        {% if  m.chip == "1" %}
+            <td>Si</td>
+        {% else %}
+            <td>No</td>
+        {% endif %}
+        <td>{{ m.rut_usuario }}</td>
+        <td>
+                <a href="{% url 'eliminar' m.id %}">Eliminar</a>
+        </td>
+    </tr>
+
+    {% endfor %}
+
+
+</table>
+
+<!--Primero preguntamos si hay mensajes que mostrar-->
+
+{% if messages %}
+<!--recorremos todos los mensajes y los mostramos-->
+    {% for m in messages %}
+        <div>{{ m }}</div>
+    {% endfor %}
+{% endif %}
 
 
 
